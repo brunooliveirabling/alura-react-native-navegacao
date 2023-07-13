@@ -3,31 +3,25 @@ import { View, TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
 
 import Estrelas from '../../../componentes/Estrelas';
 
-const distanciaEmMetros = (distancia) => {
+const distanciaEmMetros = distancia => {
     return `${distancia}m`;
-}
+};
 
 export default function Produtor({ nome, imagem, distancia, estrelas, aoPressionar }) {
-    const distanciaTexto = useMemo(
-        () => distanciaEmMetros(distancia), 
-        [distancia]
-    );
+    const distanciaTexto = useMemo(() => distanciaEmMetros(distancia), [distancia]);
 
-    return <TouchableOpacity 
-            style={estilos.cartao}
-            onPress={aoPressionar}
-        >
-        <Image source={imagem} style={estilos.imagem} accessibilityLabel={nome} />
-        <View style={estilos.informacoes}>
-            <View>
-                <Text style={estilos.nome}>{ nome }</Text>
-                <Estrelas 
-                    quantidade={estrelas}
-                />
+    return (
+        <TouchableOpacity style={estilos.cartao} onPress={aoPressionar}>
+            <Image source={imagem} style={estilos.imagem} accessibilityLabel={nome} />
+            <View style={estilos.informacoes}>
+                <View>
+                    <Text style={estilos.nome}>{nome}</Text>
+                    <Estrelas quantidade={estrelas} />
+                </View>
+                <Text style={estilos.distancia}>{distanciaTexto}</Text>
             </View>
-            <Text style={estilos.distancia}>{ distanciaTexto }</Text>
-        </View>
-    </TouchableOpacity>
+        </TouchableOpacity>
+    );
 }
 
 const estilos = StyleSheet.create({
@@ -36,7 +30,7 @@ const estilos = StyleSheet.create({
         marginVertical: 8,
         marginHorizontal: 16,
         borderRadius: 6,
-        flexDirection: "row",
+        flexDirection: 'row',
 
         // Android
         elevation: 4,
