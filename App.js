@@ -1,22 +1,19 @@
 import React from 'react';
-import { StatusBar, SafeAreaView } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-import Home from './src/telas/Home';
-import MelhoresProdutores from './src/telas/MelhoresProdutores';
-const Tab = createBottomTabNavigator();
+import { StatusBar, SafeAreaView, StyleSheet } from 'react-native';
+import AppRotas from './src/rotas/AppRotas';
 
 export default function App() {
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={style.safeAreaView}>
             <StatusBar />
-            <NavigationContainer>
-                <Tab.Navigator>
-                    <Tab.Screen name="Home" component={Home} />
-                    <Tab.Screen name="MelhoresProdutores" component={MelhoresProdutores} />
-                </Tab.Navigator>
-            </NavigationContainer>
+            <AppRotas />
         </SafeAreaView>
     );
 }
+
+const style = StyleSheet.create({
+    safeAreaView: {
+        flex: 1,
+        backgroundColor: '#EE9911BB',
+    },
+});

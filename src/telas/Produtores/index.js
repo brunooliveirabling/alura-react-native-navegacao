@@ -32,7 +32,7 @@ export default function Produtores({ melhoresProdutores }) {
 
 const estilos = StyleSheet.create({
     lista: {
-        backgroundColor: '#ffffff',
+        backgroundColor: '#EE9911BB',
     },
     titulo: {
         fontSize: 20,
