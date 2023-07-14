@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { FlatList, StyleSheet, View, Image, Text } from 'react-native';
 import Cesta from './componentes/Cesta';
 import Topo from '../../componentes/Topo';
@@ -10,6 +10,7 @@ export default function Produtor() {
     const route = useRoute();
     const { tituloProdutor, tituloCestas } = useTextos();
     const { nome, imagem, distancia, estrelas, cestas } = route.params;
+    const navigation = useNavigation();
 
     function HeaderProdutor() {
         return (
