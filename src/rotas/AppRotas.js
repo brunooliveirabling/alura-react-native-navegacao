@@ -22,10 +22,12 @@ export default function AppRotas() {
                         if (route.name === 'Melhores Produtores') {
                             Icon = Coracao;
                         }
-                        return <Icon color={color} />;
+                        return <Icon color={color} width={18} height={18} />;
                     },
-                    tabBarActiveTintColor: '#2A9F85',
-                    tabBarInactiveTintColor: '#C7C7C7',
+                    tabBarActiveTintColor: '#111111',
+                    tabBarInactiveTintColor: '#55555599',
+                    tabBarLabelStyle: { fontSize: 15, lineHeight: 15, paddingBottom: 12 },
+                    tabBarStyle: { backgroundColor: '#EE9911', height: '10%', paddingVertical: 12 },
                 })}>
                 <Tab.Screen name="Home" component={ProdutorRotas} />
                 <Tab.Screen name="Melhores Produtores" component={MelhoresProdutoresRotas} />
