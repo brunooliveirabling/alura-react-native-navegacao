@@ -1,5 +1,5 @@
-import React from 'react';
-import { FlatList, Text, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { FlatList, Text, StyleSheet, View } from 'react-native';
 
 import Produtor from './componentes/Produtor';
 import Topo from './componentes/Topo';
@@ -13,14 +13,26 @@ export default function Produtores({ melhoresProdutores }) {
     const route = useRoute();
 
     const { tituloProdutores, mensagemCompra } = useTextos();
-    const nomeCompra = route.params?.compra.nome;
-    const mensagemCompleta = mensagemCompra?.replace('$NOME', nomeCompra);
+    const compra = route.params?.compra;
+    const mensagemCompleta = mensagemCompra?.replace('$NOME', compra?.nome);
+    const [mostraCompra, setMostraCompra] = useState(false);
+
+    useEffect(() => {
+        setMostraCompra(true);
+        setTimeout(() => {
+            setMostraCompra(false);
+        }, 5000);
+    }, [compra?.timeStamp]);
 
     const TopoLista = () => {
         return (
             <>
                 <Topo melhoresProdutores={melhoresProdutores} />
-                <Text style={estilos.compra}>{mensagemCompleta}</Text>
+                {mostraCompra && (
+                    <View style={estilos.cardCompra}>
+                        <Text style={estilos.compra}>{mensagemCompleta}</Text>
+                    </View>
+                )}
                 <Text style={estilos.titulo}>{tituloProdutores}</Text>
             </>
         );
@@ -56,16 +68,17 @@ const estilos = StyleSheet.create({
         fontWeight: 'bold',
         color: '#464646',
     },
-    compra: {
-        position: 'absolute',
-        top: 95,
-        zIndex: 9,
-        flexDirection: 'row',
-        flex: 1,
+    cardCompra: {
+        marginTop: 16,
         marginHorizontal: 18,
+        backgroundColor: '#00A86B',
+        borderRadius: 6,
+    },
+    compra: {
+        color: '#FFFFFF',
         padding: 18,
-        fontSize: 20,
-        lineHeight: 35,
-        backgroundColor: '#EE9911',
+        fontSize: 18,
+        lineHeight: 25,
+        fontWeight: '700',
     },
 });

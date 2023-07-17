@@ -21,7 +21,7 @@ export default function Produtor() {
                         <View>
                             <Text style={estilos.produtor}>{nome}</Text>
                             <Text style={estilos.miniInfos}>
-                                Distância {distancia}m Estrelas: {estrelas}
+                                Distância: {distancia}m Estrelas: {estrelas}
                             </Text>
                         </View>
                     </View>

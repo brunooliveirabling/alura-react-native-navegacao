@@ -22,7 +22,7 @@ export default function Detalhes({ nome, produtor, descricao, preco }) {
             <TouchableOpacity
                 style={estilos.botao}
                 onPress={() => {
-                    navigation.reset({ index: 0, routes: [{ name: 'Home' }] });
+                    navigation.navigate('HomeScreen', { compra: { nome, timeStamp: +new Date() } });
                 }}>
                 <Texto style={estilos.textoBotao}>{botaoComprar}</Texto>
             </TouchableOpacity>
