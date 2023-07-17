@@ -18,10 +18,15 @@ export default function Produtores({ melhoresProdutores }) {
     const [mostraCompra, setMostraCompra] = useState(false);
 
     useEffect(() => {
-        setMostraCompra(true);
-        setTimeout(() => {
-            setMostraCompra(false);
-        }, 5000);
+        setMostraCompra(!!compra?.timeStamp);
+        let timeout;
+        if (compra?.timeStamp) {
+            timeout = setTimeout(() => {
+                setMostraCompra(false);
+            }, 3000);
+        }
+
+        return () => clearTimeout(timeout);
     }, [compra?.timeStamp]);
 
     const TopoLista = () => {
